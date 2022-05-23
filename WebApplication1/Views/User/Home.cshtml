@@ -1,0 +1,401 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<WebApplication1.Models.tbl_category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+
+    .cimg {
+        -webkit-transform 5s;
+        transition: transform 5s;
+    }
+
+        .cimg:hover {
+            -webkit-transform: rotatez(0deg);
+        }
+
+    #sidebar ul ul li a {
+        font-size: 12px;
+    }
+
+    #sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    #sidebar li a {
+        font-weight: bold;
+        background: url(../images/tabRepeatInactive.png) repeat-x 0 0;
+        color: #262626;
+    }
+
+    #sidebar ul li li a {
+        background: #eee;
+        padding-left: 14px;
+        font-weight: normal;
+        display: block;
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+
+    /** {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.contentcontainer {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}*/
+
+
+
+</style>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @*<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+
+        <h3 style="text-align:center;">PLANT GENRE</h3>
+        <b>
+            <p>
+                There is an incredible number of different plants in the world. Humans separate plants according to particular traits. Some of the most important differences between plants are whether they have seeds or vascular tissue. Plants have been grouped into twelve different phyla depending on these characteristics. Incidentally, learning about the types of plants also takes us on an evolutionary journey as plants emerged from aquatic systems and increased in complexity.
+            </p>
+        </b>
+    </div>*@
+
+    <div style="height:1150px; ">
+
+
+
+
+        <div class="row" style="margin-bottom:40px">
+            <div id="sidebar" class="col-md-3">
+                <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                    <li class="subMenu open">
+                        <a>Plants without seeds </a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/User/ViewAd/4")"><i class="icon-chevron-right"></i>Mosses </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/3 ")"><i class="icon-chevron-right"></i>Liverworts and hornworts </a></li>
+                            @*<li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Mobile Phone")"><i class="icon-chevron-right"></i>Mobile Phone </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Sound&Vision")"><i class="icon-chevron-right"></i>Sound & Vision </a></li>*@
+                        </ul>
+                    </li>
+                    <li class="subMenu open">
+                        <a> Plants Based on Growth Habits </a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/User/Ads/7")"><i class="icon-chevron-right"></i>Tree </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/12")"><i class="icon-chevron-right"></i>Shrubs </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/11")"><i class="icon-chevron-right"></i>Herbs</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="subMenu open">
+                        <a>Plants with seeds </a>
+                        <ul>
+                            <li class="active"><a href="@Url.Content("~/User/ViewAd/10")"><i class="icon-chevron-right"></i>Conifers </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/9")"><i class="icon-chevron-right"></i>Gnetophyta </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/8")"><i class="icon-chevron-right"></i>Ginkgo </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/7")"><i class="icon-chevron-right"></i>Cycads </a></li>
+
+                        </ul>
+                    </li>
+                    @*<li><a href="@Url.Content("~/Lostproducts/Index?movieC=human")">HUMAN </a></li>*@
+                    @*<li class="subMenu open">
+                        <a>OTHERS</a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Music Instruments")"><i class="icon-chevron-right"></i>Music Instruments</a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Music Instruments")"><i class="icon-chevron-right"></i>Sports Equipments </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Jwelary")"><i class="icon-chevron-right"></i>Jwelary </a></li>
+
+                        </ul>
+
+
+                    </li>*@
+                </ul>
+                <br />
+                <br />
+                <br />
+                @*<ul id="sideManu" class="nav nav-tabs nav-stacked">
+
+                    <li class=" subMenu open">
+                        <a> LOCATION</a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/Lostproducts/Index?divisionsrch=dhaka")"><i class="icon-chevron-right"></i>DHAKA </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=khulna")"><i class="icon-chevron-right"></i>KHULNA </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=barisal")"><i class="icon-chevron-right"></i>BARISAL</a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=chittagong")"><i class="icon-chevron-right"></i>CHITTAGONG </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=rajshahi")"><i class="icon-chevron-right"></i>RAJSHAHI </a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=rangpur")"><i class="icon-chevron-right"></i>RANGPUR</a></li>
+                            <li><a href="@Url.Content("~/Lostproducts/Index?divisionsrch=shylet")"><i class="icon-chevron-right"></i>SHYLET </a></li>
+
+                        </ul>
+                    </li>
+                </ul>*@
+
+
+                <br />
+                <br />
+
+            </div>
+
+            @*<div class="col-lg-8 col-md-8">
+
+
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-4" style="height:200px;margin-top:50px">
+
+                            <img class="img img-responsive cimg" src="@Url.Content(item.cat_image)" style=" height:100%;width:100% ;border-radius:0px 0px 0px 0px" />
+                            <h4 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> @Html.ActionLink(@item.cat_name, "Ads", new { id = @item.cat_id })</h4>
+
+                        </div>
+
+                    }
+                }
+            </div>
+        </div>*@
+
+
+
+            @*<img src="~/Content/img/LOB_val_600.gif" class="img img-responsive" style="width:100%; height:100%" />*@
+
+
+
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
+
+                body {
+                    margin: 0;
+                    font-family: Arial;
+                }
+
+                /* The grid: Four equal columns that floats next to each other */
+                .column {
+                    float: left;
+                    width: 25%;
+                    padding: 10px;
+                }
+
+                    /* Style the images inside the grid */
+                    .column img {
+                        opacity: 0.9;
+                        cursor: pointer;
+                    }
+
+                        .column img:hover {
+                            opacity: 1;
+                        }
+
+                /* Clear floats after the columns */
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+
+                /* The expanding image container */
+                .concontainer {
+                    position: relative;
+                    display: none;
+                }
+
+                /* Expanding image text */
+                #imgtext {
+                    position: absolute;
+                    bottom: 15px;
+                    left: 15px;
+                    color: white;
+                    font-size: 20px;
+                }
+
+                /* Closable button inside the expanded image */
+                .closebtn {
+                    position: absolute;
+                    top: 10px;
+                    right: 15px;
+                    color: white;
+                    font-size: 35px;
+                    cursor: pointer;
+                }
+            </style>
+
+
+
+
+            <div style="text-align:center">
+                <h2>Picture of Plants Category</h2>
+                <p></p>
+            </div>
+
+            <!-- The four columns -->
+            <div class="col-lg-8 col-md-8">
+                <div class="col-lg-8 col-md-8">
+                    <img src="~/Content/img/annual.jpg" alt="Annual" style="width:100%" onclick="myFunction(this);">
+                </div>
+                <div class="column">
+                    <img src="~/Content/img/bulbs.jpg" alt="Bulbs" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/cactus-succulents.jpg" alt="Conifers" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/climbers.jpg" alt="Climbers" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/conifers.jpg" alt="Conifers" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/Ferns.jpg" alt="Ferns" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/fruit.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/herbs.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/ornamental-grasses.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/perennials.jpeg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+                <div class="column">
+                    <img src="~/Content/img/roses.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+                <div class="column">
+                    <img src="~/Content/img/shrubs.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/tree.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/palms-cycads.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+                <div class="column">
+                    <img src="~/Content/img/bamboos.jpg" alt="Fruits" style="width:100%" onclick="myFunction(this);">
+                </div>
+
+
+
+            </div>
+
+            @*<div class="contentcontainer">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <img id="expandedImg" style="width:100%">
+            <div id="imgtext"></div>
+        </div>
+
+        <script>
+            function myFunction(imgs) {
+                var expandImg = document.getElementById("expandedImg");
+                var imgText = document.getElementById("imgtext");
+                expandImg.src = imgs.src;
+                imgText.innerHTML = imgs.alt;
+                expandImg.parentElement.style.display = "block";
+            }
+        </script>*@
+
+
+
+
+        </div>
+
+
+    </div>
+
+    @*<div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>*@
+</body>
+</html>
+
+
+
+
+

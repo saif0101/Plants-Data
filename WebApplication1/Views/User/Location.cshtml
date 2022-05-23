@@ -1,0 +1,113 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Location";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<style>
+    {
+        height: 100%;
+        margin: 0;
+        font: 400 15px/1.8 "Lato", sans-serif;
+        color: #777;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            margin-right: 500px;
+            height: 300px; /* The height is 400 pixels */
+            width: 30%; /* The width is the width of the web page */
+        }
+
+        #vap {
+            margin-left: 800px;
+            height: 300px; /* The height is 400 pixels */
+            width: 30%; /* The width is the width of the web page */
+        }
+    </style>
+</head>
+<body>
+    @*#plant{
+        margin-right:0px;
+
+        }*@
+    <div class="row">
+
+        <h3 style="margin-left:20px;">   Plants (fossil ferns, wood, roots, etc.)</h3>
+        <br />
+        <div class="col-md-5" style="margin-left:20px;">
+
+            <h4>
+
+                Plants can be divided into two main groups: those that reproduce by microscopic spores,
+                and those that reproduce by seeds. Examples of spore-bearing plants are mosses, true ferns,
+                horsetail rushes, and club mosses. Seed-bearing plants are most abundant in Kentucky today.
+                Examples are grasses, tobacco, oaks, maples, and poison ivy.
+                Fossils of both groups are abundant in parts of Kentucky.
+                Plant fossils have been found in black shales of Devonian age in the Knobs Region,
+                in shales and sandstones of the Eastern and Western Kentucky Coal Fields, and in clay, shale, and sands of the Cretaceous and Tertiary sediments of the Jackson Purchase Region.
+            </h4>
+            <img src="~/Content/img/dv_asterox.jpg" alt="map">
+        </div>
+
+        <!--The div element for the map -->
+        <div id="map">
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    // The location of Uluru
+                    var PSTU = { lat: 20.4641788, lng: 89.3825297 };
+
+
+                    // The map, centered at Uluru
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 4, center: PSTU });
+                    // The marker, positioned at Uluru
+                    var marker = new google.maps.Marker({ position: PSTU, map: map });
+                }
+            </script>
+
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeLGBn0TeNa_Sgd0VOmJsekWyZyE0VnSA&callback=initMap">
+            </script>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <h3 style="margin-left:20px;"> Geographical  Plants </h3>
+        <br />
+        <div class="col-md-5" style="margin-left:20px;">
+
+            <h4>
+                Occupying nearly a third of the entire garden's surface area, the plant geography section, with its network of winding paths, invites you to a walk through different plant formations of the Northern Hemisphere's temperate zones . There is nothing comparable in the world today to the twelve rock gardens featuring plants from different mountain regions, forests, heath, dune and steppe vegetation. It was designed by the former director, Adolf Engler (1844-1930), when moving the botanic garden to its present location in Dahlem. Take the opportunity to tramp from Europe to Asia crossing the Alps and the Himalyas, and continue your journey through the peaceful Japanese section to North America.
+                Especially in early spring while the trees are still relatively bare, you will be enchanted by the patchwork of anemones, snowdrops, and related genera underneath the centennial trees of the "German beech forest" which turns into a shady, pleasantly cool area during hot summer months. Adjacent to the beech forest you will find stands of oak/hornbeam, pine/birch and fenland forests typical of the Central European landscape.
+                Around the Japanese pavilion in the East Asian area of the plant geography section grows a mixed forest which gives an impression of the natural stands of trees in China, Japan and Korea. Further south, you will find yourself transported to North America, with forests from the Atlantic and Pacific coasts interspersed with flower-rich prairie sections.
+            </h4>
+
+        </div>
+
+        <!--The div element for the map -->
+       
+            <img src="~/Content/img/pflanzengeographie_map.jpg" alt="map">
+    </div>
+
+
+
+
+
+</body>
+</html>
+

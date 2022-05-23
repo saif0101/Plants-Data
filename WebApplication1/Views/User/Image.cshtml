@@ -1,0 +1,382 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<WebApplication1.Models.tbl_category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+
+    .cimg {
+        -webkit-transform 5s;
+        transition: transform 5s;
+    }
+
+        .cimg:hover {
+            -webkit-transform: rotatez(0deg);
+        }
+
+    #sidebar ul ul li a {
+        font-size: 12px;
+    }
+
+    #sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    #sidebar li a {
+        font-weight: bold;
+        background: url(../images/tabRepeatInactive.png) repeat-x 0 0;
+        color: #262626;
+    }
+
+    #sidebar ul li li a {
+        background: #eee;
+        padding-left: 14px;
+        font-weight: normal;
+        display: block;
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container1 {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+  width:50%;
+  margin-left:345px;
+  margin-right:1010px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+
+</style>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @*<div style="color: #777;background-color:white;text-align:center;padding:0px 30px;text-align: justify;">
+
+        <h3 style="text-align:center;">PLANT GENRE</h3>
+        <b>
+            <p>
+                There is an incredible number of different plants in the world. Humans separate plants according to particular traits. Some of the most important differences between plants are whether they have seeds or vascular tissue. Plants have been grouped into twelve different phyla depending on these characteristics. Incidentally, learning about the types of plants also takes us on an evolutionary journey as plants emerged from aquatic systems and increased in complexity.
+            </p>
+        </b>
+    </div>*@
+
+
+    <div style="height:1150px; ">
+
+
+
+
+        <div class="row" style="margin-bottom:40px">
+            <div id="sidebar" class="col-md-3">
+                <ul id="sideManu" class="nav nav-tabs nav-stacked">
+
+                    <li class="subMenu open">
+                        <a>Plants with seeds </a>
+                        <ul>
+                            <li class="active"><a href="@Url.Content("~/User/ViewAd/2014")"><i class="icon-chevron-right"></i>pineapple Guava</a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/2014")"><i class="icon-chevron-right"></i>Queeny Purple </a></li>
+                            <li><a href="@Url.Content("~/ViewAd/2011")"><i class="icon-chevron-right"></i>Ginkgo </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/2034")"><i class="icon-chevron-right"></i>Cycads </a></li>
+
+                        </ul>
+
+
+                    <li class="subMenu open">
+                        <a>Plants without seeds </a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/User/ViewAd/2030")"><i class="icon-chevron-right"></i> Liverworts </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/2029 ")"><i class="icon-chevron-right"></i> Mosses</a></li>
+                            @*<li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Mobile Phone")"><i class="icon-chevron-right"></i>Mobile Phone </a></li>
+                        <li><a href="@Url.Content("~/Lostproducts/Index?subcategorysrch=Sound&Vision")"><i class="icon-chevron-right"></i>Sound & Vision </a></li>*@
+                        </ul>
+                    </li>
+                    <li class="subMenu open">
+                        <a> Plants Based on Growth Habits </a>
+                        <ul>
+                            <li><a class="active" href="@Url.Content("~/User/ViewAd/2031")"><i class="icon-chevron-right"></i>Tree </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/2032")"><i class="icon-chevron-right"></i>Shrubs </a></li>
+                            <li><a href="@Url.Content("~/User/ViewAd/2033")"><i class="icon-chevron-right"></i>Herbs</a></li>
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+            @*<h2 style="text-align:center">Slideshow Gallery</h2>*@
+
+        <div class="container1">
+            <div class="mySlides">
+                <div class="numbertext">1 / 12</div>
+                <img src="~/Content/img/climbers.jpg" style="width:50%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 12</div>
+                <img src="~/Content/img/conifers.jpg" style="width:50%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 12</div>
+                <img src="~/Content/img/tree.jpg" style="width:50%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 12</div>
+                <img src="~/Content/img/shrubs.jpg" style="width:50%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">5 / 12</div>
+                <img src="~/Content/img/roses.jpg" style="width:50%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">6 / 12</div>
+                <img src="~/Content/img/perennials.jpeg" style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">7 / 12</div>
+                <img src="~/Content/img/annual.jpg" style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">8 / 12</div>
+                <img src="~/Content/img/bulbs.jpg"  style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">9 / 12</div>
+                <img src="~/Content/img/cactus-succulents.jpg"  style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">10 / 12</div>
+                <img src="~/Content/img/Ferns.jpg" style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">11 / 12</div>
+                <img src="~/Content/img/fruit.jpg" style="width:50%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">12 / 12</div>
+                <img src="~/Content/img/herbs.jpg" style="width:50%">
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+            <div class="caption-container">
+                <p id="caption"></p>
+
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/climbers.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Climbers">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/conifers.jpg" style="width:100%" onclick="currentSlide(2)" alt="Conifers">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/tree.jpg" style="width:100%" onclick="currentSlide(3)" alt="Tree">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/shrubs.jpg" style="width:100%" onclick="currentSlide(4)" alt="Shurbs">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/roses.jpg" style="width:100%" onclick="currentSlide(5)" alt="Roses">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/perennials.jpeg" style="width:100%" onclick="currentSlide(6)" alt="Perennials">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/annual.jpg" style="width:100%" onclick="currentSlide(7)" alt="Annual">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/bulbs.jpg"  style="width:100%" onclick="currentSlide(8)" alt="Bulbs">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/cactus-succulents.jpg"  style="width:100%" onclick="currentSlide(9)" alt="Cactus">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/Ferns.jpg" style="width:100%" onclick="currentSlide(10)" alt="Ferns">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/fruit.jpg" style="width:100%" onclick="currentSlide(11)" alt="Fruits">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="~/Content/img/herbs.jpg" style="width:100%" onclick="currentSlide(12)" alt="HerbsS">
+                </div>
+            </div>
+        </div>
+
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("demo");
+                    var captionText = document.getElementById("caption");
+                    if (n > slides.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = slides.length }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    captionText.innerHTML = dots[slideIndex - 1].alt;
+                }
+            </script>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+
+
+
+
+    </div>
+
+  
+</body>
+</html>
+
+
+
+
+
